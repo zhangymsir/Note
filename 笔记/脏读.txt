@@ -1,0 +1,27 @@
+var tables = new string[] { "ContactsKOL", "ContactsKDM", "ContactsSPK", "DICProductAndPromo", "DICProductAndPromoPrdRelationship", "MarketingArea", "PrivateMedical" };
+                var tableName = Array.IndexOf(tables, entity.GetType().Name) == -1 ? entity.GetType().Name + "s" : entity.GetType().Name;
+                var sql = $"update {tableName} set MQSyncStatusEnum = 1 where Id=@Id";
+
+                SqlParameter[] parametersPage =
+                {
+                    new SqlParameter("@Id",entity.Id)
+                };
+                var count = _sqlExecuter.Execute(sql, parametersPage);
+
+
+
+
+
+
+
+
+
+
+
+
+            <button id="DailySignRefreshUserListButton" class="btn green" onclick="test()" style="padding-left:10px"><i class="fa fa-search"></i> @L("Search")</button>
+function test() {
+    adf.services.app.serviceItem.pushData().done(function () {
+        console.log("hello world!");
+    });
+}

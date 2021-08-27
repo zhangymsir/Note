@@ -1,0 +1,26 @@
+后端
+var getPlace = "https://restapi.amap.com/v3/geocode/regeo?output=json&location=117.125206,36.651021&key=01503b8450e97de7f881d3a7a6961000";
+            var result = AsyncHelper.RunSync(() =>
+            {
+                return getPlace.GetJsonAsync();
+            });
+
+
+
+前端
+<script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=f464fe7bb5b7a67832b840ed1c9d45fc&plugin=AMap.Geocoder"></script>
+                            <script type="text/javascript">
+                                var lnglat = ["117.125206", "36.651021"];
+                                var geocoder = new AMap.Geocoder();
+                                geocoder.getAddress(lnglat, function (status, result) {
+                                    debugger;
+                                    if (status === 'complete' && result.regeocode) {
+                                        var address = result.regeocode.formattedAddress;
+                                        // document.getElementById('address').value = address;
+                                        console.log(address);
+                                    } else {
+                                        log.error('根据经纬度查询地址失败');
+                                    }
+                                });
+                            </script>

@@ -1,0 +1,4 @@
+按F1 
+键入Drawio Export 
+选择文件格式
+回车

@@ -1,0 +1,8 @@
+function stopPropagation(e) {
+    e = e || window.event;
+    if (e.stopPropagation) { //W3C×èÖ¹Ã°ÅÝ·½·¨  
+        e.stopPropagation();
+    } else {
+        e.cancelBubble = true; //IE×èÖ¹Ã°ÅÝ·½·¨  
+    }
+}

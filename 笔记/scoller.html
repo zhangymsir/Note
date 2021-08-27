@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滚动</title>
+    <style>
+        div {
+            /* height: 300px; */
+            width: 1000px;
+            padding: 10px;
+            margin: 10px;
+            border: 5px solid #ddd;
+            overflow: hidden;
+        }
+
+        /* div {
+            width: 1000px;
+            background: linear-gradient(to bottom, red, green, blue, yellow)
+        } */
+
+        #s1 {
+            height: 500px;
+        }
+
+        #s2 {
+            height: 1500px;
+        }
+
+        #s3 {
+            height: 2000px;
+        }
+
+        body button {
+            position: fixed;
+            bottom: 10%;
+            width: 100px;
+            height: 30px;
+        }
+
+        body button:first-of-type {
+            right: 5%;
+        }
+
+        body button:last-of-type {
+            left: 5%;
+        }
+
+        /* .top {
+            display: none;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- <div></div> -->
+    <header>
+        <h1>头部</h1>
+    </header>
+    <button class="top" style="display: none;">TOP</button>
+    <!-- <button class="bottom">BOTTOM</button> -->
+    <div id="s1"></div>
+    <br>
+    <div id="s2"></div>
+    <br>
+    <div id="s3"></div>
+    <footer>
+        <h1>底部</h1>
+    </footer>
+</body>
+
+</html>
+<script>
+    // document.write(document.documentElement.clientWidth + ' | ');  // 1707
+    // document.write(document.documentElement.clientHeight);  // 803
+    // document.querySelector("button.top").addEventListener("click", (event) => {
+    //     let h1 = document.querySelector("header h1");
+    //     h1.scrollIntoView({
+    //         behavior: "smooth",
+    //     })
+    // });
+
+    // document.querySelector("button.bottom").addEventListener("click", (event) => {
+    //     let h1 = document.querySelector("footer h1");
+    //     h1.scrollIntoView({
+    //         behavior: "smooth",
+    //     })
+    // });
+
+    /*
+     * 思路
+     * 监听全局滚动事件
+     * 判断div是否在视口区域（判断依据：y轴为小于等于0时）
+     * 滚动的高度大于div高度的1/2 且底部距离大于1000
+     * 
+    */
+    let s1 = document.getElementById('s3');
+    let to = document.querySelector("button.top");
+    let s1_cr = s1.getBoundingClientRect();
+    let s1_y = -s1_cr.height / 2;
+    document.addEventListener("scroll", () => {
+        var sq_cr1 = s1.getBoundingClientRect();
+        if (sq_cr1.y < 0) {
+            if (sq_cr1.y < -s1_y) {
+                to.style.display = "";
+            } else {
+                to.style.display = "none";
+            }
+
+            if (sq_cr1.bottom <= 1000) {
+                to.style.display = "none";
+            }
+        } else {
+            to.style.display = "none";
+        }
+    });
+</script>

@@ -1,0 +1,3 @@
+var te = Type.GetType("YDT.PSP.BusinessEntity.BaseProduct");
+            //var i = _beeSyncHelper.GetType().GetMethod("BeeSyncCallback");
+            //var a =  i.MakeGenericMethod(te).Invoke(_beeSyncHelper, new object[] { dto });
